@@ -1,0 +1,36 @@
+
+{% extends 'base.html' %}
+{% block  title%}Signup_page{% endblock  %}
+{% block  body%}
+<form method="POST">
+	{% csrf_token %}
+    <div class="container">
+        
+        {% if messages %}
+
+        {% for message in messages %}
+
+        <div class="text-center text-danger pt-3"></button>
+            <strong>{{message}}</strong>
+        </div>
+        {% endfor %}
+        {%endif%}
+        <div class="row d-flex justify-content-center align-items-center my-5">      
+            <div class=" d-flex flex-column justify-content-center  form  mt-5  form " >
+                <h1 class="text-center mb-3 text-white fw-bold">SIGN UP</h1>
+                <p class="text-center text-light py-3">Please Enter Your Details</p>
+                
+                <input type="text" placeholder="User Name" class="bg-transparent border border-2 mb-2 border-dark rounded lh-lg mx-2 text-white" name='username'>
+                <input type="text" placeholder="First Name" class="bg-transparent border border-2 mb-2 border-dark rounded lh-lg mx-2 text-white" name='firstname'>
+                <input type="text" placeholder="Last Name" class="bg-transparent border border-2 mb-2 border-dark rounded lh-lg mx-2 text-white" name='lastname'>
+                <input type="email" placeholder="Email" class="bg-transparent border border-2 border-dark rounded lh-lg mx-2 text-white" name='email'>
+                <input type="password" placeholder="Password" class="mt-2 bg-transparent border-2 border border-dark rounded lh-lg mx-2 text-white" name='password1'>
+                <input type="password" placeholder="Re_Password" class="mt-2 bg-transparent border-2 border border-dark rounded lh-lg mx-2 text-white" name='password2'>
+                <button type="submit" value="submit" class="btn btn-dark mt-5 mx-5">Sign in</button>
+                
+                <p class="mt-2 mx-5">you have an account, Just &nbsp;<a href="{%url 'login'%}">Login</a></p>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock  %}

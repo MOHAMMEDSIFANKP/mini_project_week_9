@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block  title%}Create_User{% endblock  %}
+{% block body %}
+<style>
+.usercreat{
+    background-color: rgba(0, 0, 0, 0.338)!important;
+    border-radius: 2%;
+}
+.b{
+    text-align: right;
+}
+</style>
+<div class="b pt-3 px-3">
+    <a href="{%url 'dashbords'%}"><button class="btn btn-outline-light btn-lg px-5" >Back</button></a></div>
+<div class="container ">
+    <div class="row justify-content-center mt-5">
+        <div class="usercreat border border-radius-3 card col-5 p-4 text-white">
+            <h2 class="text-center">Create User</h2>
+
+            {% if messages %}
+            {% for message in messages %}
+            <div class="text-center text-danger pt-3">
+                <strong>{{message}}</strong>
+            </div>
+            {% endfor %}
+            {%endif%}
+
+            <form action="{% url 'create' %}" method="post">
+                {% csrf_token %}
+                <div class="mb-2">
+                    <label for="" class="form-label">First Name : </label>
+                    <input type="text" name="firstname" id="" class="form-control bg-transparent text-white" >
+                </div>
+                <div class="mb-2">
+                    <label for="" class="form-label">Last Name : </label>
+                    <input type="text" name="lastname" id="" class="form-control bg-transparent text-white">
+                </div>
+                <div class="mb-2">
+                    <label for="" class="form-label">Username : </label>
+                    <input type="text" name="username" id="" class="form-control bg-transparent text-white">
+                </div>
+                <div class="mb-2">
+                    <label for="" class="form-label">Email : </label>
+                    <input type="email" name="email" id="" class="form-control bg-transparent text-white">
+                </div>
+                <div class="mb-2">
+                    <label for="" class="form-label">Create Password : </label>
+                    <input type="password" name="password1" id="" class="form-control bg-transparent text-white">
+                </div>
+
+                <div class="mb-2">
+                    <label for="" class="form-label">Confirm Password : </label>
+                    <input type="password" name="password2" id="" class="form-control bg-transparent text-white">
+                </div>
+                <div class="form-check mb-5">
+                  <input class="form-check-input text-white" type="checkbox" id="is_superuser" value="checked" name="is_superuser">
+                  <label class="form-check-label">
+                    Super User
+                  </label>
+                </div>
+
+                <div class="d-grid">
+                    <button class="btn btn-success btn-lg"  type="submit">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock  %}

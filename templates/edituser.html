@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}Edit_User{% endblock  %}
+{% block body %}
+<style>
+    .usercreat{
+        background-color: rgba(0, 0, 0, 0.338)!important;
+        border-radius: 2%;
+    }
+    .b{
+        text-align: right;
+    }
+    </style>
+    <div class="b">
+    <a href="{%url 'dashbords'%}"><button class="btn btn-outline-light btn-lg px-5 mt-3 mx-3" >Back</button></a></div>
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="usercreat border border-radius-3 card col-5 p-5 text-white">
+            <h2 class="text-center">Update User</h2>
+            {% if messages %}
+            {% for message in messages %}
+            <div class="text-center text-danger pt-3">
+                <strong>{{message}}</strong>
+            </div>
+            {% endfor %}
+            {%endif%}
+
+            <form method='POST'>
+                {% csrf_token%}
+                <div class="mb-3">
+
+                    <div class="mb-2">
+                        <label  class="form-label">First Name : </label>
+                        <input type="text" name="firstname" id="" class="form-control bg-transparent text-white" value="{{user.first_name}}" >
+                    </div>
+                    <div class="mb-2">
+                        <label  class="form-label">Last Name : </label>
+                        <input type="text" name="lastname" id="" class="form-control bg-transparent text-white" value="{{user.last_name}}">
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Username : </label>
+                        <input type="text" name="username" id="" class="form-control bg-transparent text-white" value="{{user.username}}">
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Email : </label>
+                        <input type="email" name="email" id="" class="form-control bg-transparent text-white" value="{{user.email}}">
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-labe ">Create Password : </label>
+                        <input type="password" name="password" id="" class="form-control bg-transparent text-white">
+
+                <div class="d-grid mt-2">
+                    <button class="btn btn-success btn-lg" type="submit">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock  %}

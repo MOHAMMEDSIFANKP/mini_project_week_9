@@ -1,0 +1,13 @@
+
+body{
+    width: 100%;
+    height: 48vw;
+    background-image:url(dark-bg.png) ;
+    background-size: 100%;
+}
+.form{
+    height: 600px;
+    width: 400px!important;
+    background-color: rgba(0, 0, 0, 0.338);
+    border-radius: 2%;
+}

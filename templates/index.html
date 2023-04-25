@@ -1,0 +1,36 @@
+
+{% extends 'base.html' %}
+{% block  title%}Login_page{% endblock  %}
+{% block  body%}
+<body> 
+     <form method="POST">
+	   {% csrf_token %}
+    <div class="container">
+        <div class="row d-flex justify-content-center align-items-center my-5">
+            {% if messages %}
+
+            {% for message in messages %}
+    
+            <div class="text-center text-danger pt-3">
+                <strong>{{message}}</strong>
+            </div>
+            {% endfor %}
+            {%endif%}
+            <div class=" d-flex flex-column justify-content-center  form  mt-5  form " >
+                <h1 class="text-center mb-3 text-white fw-bold">LOG IN</h1>
+                <p class="text-center text-light py-3">Please Enter Your Email and Password</p>
+                
+                <input type="text" placeholder="User Name" class="bg-transparent border border-2 border-dark rounded lh-lg mx-2 text-white" name='username'>
+                <input type="text" placeholder="Password" class="mt-2 bg-transparent border-2 border border-dark rounded lh-lg mx-2 text-white" name='password'>
+                <button type="submit" value="submit" class="btn btn-dark mt-5 mx-5">log in</button>
+                <p class="mt-2 mx-5">Don't have an account yet? &nbsp;<a href="{%url 'signup'%}">SignUp</a></p>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+</form>
+</body>
+</html>
+{% endblock  %}

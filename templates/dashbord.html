@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block  title%}Dashbord{% endblock  %}
+{% block body %}
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark ps-5 pe-5">
+            <a class="navbar-brand" href="#">Admin Dashboard</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation"></button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+
+                    <li class="nav-item"><a class="nav-link btn btn-success  active" href="{%url 'create'%}">New User</a> </li>
+
+                </ul>
+                <p class="text-war pe-1 pt-2" style="color: rgb(189, 132, 34);font-weight: bold;">Welcome {{user.username}}</p>
+                <form method='POST' class="d-md-flex mt-1 mb-1 ms-5 pe-3">
+                    {% csrf_token %}
+                    <input required name='searching' class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                 </form>
+                <form class="d-flex my-2 my-lg-0">
+                    <a href="{%url 'logout'%}"><button class="btn btn-warning my-sm-0" type="button">Logout</button></a>
+                </form>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover align-middle ">
+                            <thead class="table-success">
+                                <tr>
+                                    <th>Photo</th>
+                                    <th>Username</th>
+                                    <th>First Name</th>
+                                    <th>last Name</th>
+                                    <th>Email</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                            
+                                
+                                {% for user in users %}
+                            
+                                <tr class="text-white">
+                                    <td scope="row"><img src="http://static.everypixel.com/ep-pixabay/0329/8099/0858/84037/3298099085884037069-head.png" width="60px" height="60px" alt=""></td>
+                                    <td>{{user.username}}</td>
+                                    <td>{{user.first_name}}</td>
+                                    <td>{{user.last_name}}</td>
+                                    <td>{{user.email}}</td>
+                                    <td><a class="btn btn-primary me-2" href="{% url 'edit' user.id%}" role="button">Edit</a>
+                                        <a class="btn btn-danger" href="{% url 'delete' user.id%}" role="button">Delete</a></td>
+                                </tr>
+                                {% endfor %}
+                            
+        
+                                </tr>
+                            </tbody>
+                            <tfoot>
+        
+                            </tfoot>
+                        </table>
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+    </header>
+    {% endblock %}
